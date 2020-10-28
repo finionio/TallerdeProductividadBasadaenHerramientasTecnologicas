@@ -1,2 +1,4 @@
 .DS_Store
 node_modules/
+
+#ignore the node_modules, porque estaremos usando java como backend. También es una prueba para el branch develop
