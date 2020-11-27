@@ -41,7 +41,7 @@ public class Prueba {
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"confirmar_contraseña_res\"]"))).sendKeys("petish");
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"direccion_res\"]"))).sendKeys("Enrique Segoviano");
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[3]/div[3]/select/option[7]")));
-      driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+      driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"boton_registrarse_restaurante\"]"))).click();
 
       Thread.sleep(5000); 
