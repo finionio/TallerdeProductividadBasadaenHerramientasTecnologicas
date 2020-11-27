@@ -15,48 +15,50 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Prueba {
     //prueba para realizar login automatico en base a un archivo excel, incluido en el repositorio
     public static void main(String[] argumentos) throws InterruptedException, NoSuchElementException, IOException {
-      //Propiedades del archivo excel 
-      String excelPath = "./Credenciales/credenciales.xlsx";  //Debe ser aguevo establecido como system.property
-      String sheetName = "auth_sheet";
+ 
       
       //Estableciendo propiedad del ChromeDriver
       System.setProperty("webdriver.gecko.driver", "C:/GeckoDriver/geckodriver.exe");
-      
-      //Instanciamiento de mi clase ExcelUtils para construir un lector
-      ExcelUtils excel = new ExcelUtils(excelPath, sheetName);
-      
-      //instanciamiento del usuario y password
-      String usr = excel.getCellData(1,0);
-      String pwd = excel.getCellData(1,1);
-      
+
       //Instanciamiento del WebDriver para firefox 
       WebDriver driver;
       driver = new FirefoxDriver();
       driver.manage().window().maximize();
       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-      String url = excel.getCellData(1, 2);
+      String url = "file:///C:/Users/Toshiba/Desktop/Tecmilenio/Ultimo%20Semestre/Ultimo%20Java/ProyectoIntegrador/Bana-na/src/main/webapp/PROYECTO%20FINAL.html";      
       
-      
-      /*
-      //metodo accionador del driver con URL  
+            //metodo accionador del driver con URL  
       driver.get(url);
       //instanciamiento de webdriverWait
       WebDriverWait wait;
       wait = new WebDriverWait(driver, 20);
-      //Esperamos a que se cargue el elementoHTML quenecesitamos para ls pruebas  
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[1]/div[1]/input"))).sendKeys(usr); 
-      driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-      driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[1]/div[2]/input")).sendKeys(pwd);
-      driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-      driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[2]/button")).click();
-       
-      Thread.sleep(5000); 
-      //Esperar a que se cargue el feed para cerrar sesión
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div[2]/div[4]/div[1]/span/div/div[1]/i"))).click();
-      //Cerrar sesión
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div[2]/div[4]/div[2]/div/div[1]/div[1]/div[1]/div/div/div/div/div/div/div/div/div[1]/div/div[3]/div/div[4]/div/div[1]/div[2]/div/div/div/div/span"))).click();
-      */
+      
+      driver.findElement(By.xpath("/html/body/div/div[1]/a/button")).click();
+      
+      
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"new_restaurante\"]"))).sendKeys("Bana-na");
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"new_contraseña_res\"]"))).sendKeys("petish");
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"confirmar_contraseña_res\"]"))).sendKeys("petish");
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"direccion_res\"]"))).sendKeys("Enrique Segoviano");
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[3]/div[3]/select/option[7]")));
+      driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"boton_registrarse_restaurante\"]"))).click();
 
+      Thread.sleep(5000); 
+      
+      driver.findElement(By.xpath("/html/body/div[1]/div/h2[2]")).click();
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"boton_crear_platillo\"]"))).click();      
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"new_platillo\"]"))).sendKeys("panquecito chocolate");      
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"new_precio\"]"))).sendKeys("20");      
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div/button[1]"))).click();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);      
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/h3"))).click();      
+          
+      
+      
+      
+      
       Thread.sleep(5000); 
       driver.close();
       driver.quit();
