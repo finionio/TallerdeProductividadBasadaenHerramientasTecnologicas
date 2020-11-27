@@ -1,6 +1,10 @@
 # TallerdeProductividadBasadaenHerramientasTecnologicas
 Proyecto Integrador Fase IV   Fernando Gutierrez Arevalo
 
+Link del video Demo:
+https://vimeo.com/user108462304/review/484325938/2ea78ae264
+
+
 Descripción del problema
 
 No hay problema, pero tampoco hay optimización, entonces, esto funge como un problema. Empezar un negocio , puede, y debe ser al principio algo rudimentario. Uno puede identificar clientes constantes conforme ellos van comprando en un negocio, pero cuando se tiene una gran cartera de clientes constantes, entonces la personalización podría ser mucho más compleja. Se requiere monitorear los ingreso y la posibilidad de generación de facturas, en caso de ser requeridas.
